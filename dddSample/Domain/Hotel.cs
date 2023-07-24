@@ -10,7 +10,7 @@ namespace Domain
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public decimal Rating { get; set; }
+        public decimal StarsRating { get; set; }
         public string Comment { get; set; }
         public string Address { get; set; }
     }
