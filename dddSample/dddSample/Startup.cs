@@ -1,4 +1,4 @@
-﻿using Domain.Data;
+﻿using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace dddSample
@@ -75,3 +75,4 @@ namespace dddSample
         }
     }
 }
+
