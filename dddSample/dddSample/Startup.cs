@@ -1,4 +1,7 @@
-﻿namespace dddSample
+﻿using Domain.Data;
+using Microsoft.EntityFrameworkCore;
+
+namespace dddSample
 {
     public class Startup
     {
@@ -11,9 +14,9 @@
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<ApplicationDbContext>(options =>
-            //    options.UseSqlServer(
-            //        Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<HotelsDB>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddAuthentication();
 
