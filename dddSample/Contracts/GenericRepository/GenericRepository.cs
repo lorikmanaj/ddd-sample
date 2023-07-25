@@ -45,7 +45,7 @@ namespace Core.GenericRepository
         public async Task<T> GetAsync(int? id)
         {
             var result = await _context.Set<T>().FindAsync(id);
-            
+
             if (result is null)
                 throw new NotFoundException(typeof(T).Name, id.HasValue ? id : "No Key Provided");
 

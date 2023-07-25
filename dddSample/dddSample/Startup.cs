@@ -22,7 +22,7 @@ namespace dddSample
 
             services.AddControllersWithViews();
             services.AddRazorPages();
-            
+
             //services.AddSpaStaticFiles(configuration =>
             //{
             //    configuration.RootPath = "ClientApp/dist";
