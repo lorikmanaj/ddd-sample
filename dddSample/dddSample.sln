@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dddSample", "dddSample\dddSample.csproj", "{185725A0-27E6-4B5B-A656-78FB595CAB13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dddSample", "dddSample\dddSample.csproj", "{185725A0-27E6-4B5B-A656-78FB595CAB13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{2E8F78B4-8EED-41BB-AEB0-EA8477405962}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{2E8F78B4-8EED-41BB-AEB0-EA8477405962}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{B31DB089-4373-4246-80C0-EF933E986EDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{B31DB089-4373-4246-80C0-EF933E986EDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{40681517-EEA1-45C5-8B72-3A698741F207}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Contracts\Core.csproj", "{40681517-EEA1-45C5-8B72-3A698741F207}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
