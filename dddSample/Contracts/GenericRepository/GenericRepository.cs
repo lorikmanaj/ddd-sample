@@ -1,4 +1,5 @@
-﻿using Infrastructure.Data;
+﻿using Core.Exceptions;
+using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
