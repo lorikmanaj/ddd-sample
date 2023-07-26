@@ -12,10 +12,11 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
-import { CountriesService } from './services/countries.service'
-import { HotelsService } from './services/hotels.service';
 import { CountriesDropdownComponent } from './countries-dropdown/countries-dropdown.component';
 import { HotelsGridComponent } from './hotels-grid/hotels-grid.component';
+
+import { CountriesService } from './services/countries.service';
+import { HotelsService } from './services/hotels.service';
 
 @NgModule({
   declarations: [
@@ -38,9 +39,9 @@ import { HotelsGridComponent } from './hotels-grid/hotels-grid.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-    ])
+    ]),
   ],
   providers: [CountriesService, HotelsService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -21,11 +21,19 @@ export class CountriesDropdownComponent implements OnInit {
 
   loadCountries(): void {
     this.countriesService.getCountries().subscribe((countries) => {
+      console.log(countries);
       this.countries = countries;
     });
   }
 
   onCountryChange(): void {
     this.countrySelected.emit(this.selectedCountryId);
+  }
+
+  getSelectedCountry(): Country | null {
+    if (this.selectedCountryId) {
+      return this.countries.find((country) => country.countryId === this.selectedCountryId) || null;
+    }
+    return null;
   }
 }
