@@ -1,1 +1,7 @@
-<p>countries-dropdown works!</p>
+<h2>Select Country:</h2>
+<select [(ngModel)]="selectedCountryId" (change)="onCountryChange()">
+  <option *ngFor="let country of countries" [value]="country.id">{{ country.name }}</option>
+</select>
+<div *ngIf="selectedCountryId">
+  <p>Country Object: {{ getSelectedCountry() | json }}</p>
+</div>
