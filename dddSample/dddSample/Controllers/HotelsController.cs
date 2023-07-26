@@ -66,7 +66,7 @@ namespace dddSample.Controllers
             var valRes = new HotelValidator().Validate(hotel);
             if (!valRes.IsValid)
                 return BadRequest(valRes.Errors.Select(x => x.ErrorMessage).ToList());
-            
+
             var result = await _hotelsRepository.AddAsync(hotel);
             return CreatedAtAction(nameof(GetHotel), new { id = result.Id }, result);
         }

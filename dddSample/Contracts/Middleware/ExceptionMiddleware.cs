@@ -1,4 +1,5 @@
 ﻿using Core.Exceptions;
+using Domain.ErrorDetailModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -59,11 +60,5 @@ namespace Core.Middleware
             context.Response.StatusCode = (int)statusCode;
             return context.Response.WriteAsync(response);
         }
-    }
-
-    public class ErrorDetails
-    {
-        public string ErrorType { get; set; }
-        public string ErrorMessage { get; set; }
     }
 }

@@ -28,7 +28,6 @@ using FluentValidation;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
