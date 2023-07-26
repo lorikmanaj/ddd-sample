@@ -1,13 +1,14 @@
-import { Injectable } from '@angular/core';
-import { environment } from './../environments/environment.prod';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Hotel } from '../app/models/hotel';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { Hotel } from '../models/hotel';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HotelsService {
+
   private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
@@ -25,7 +26,7 @@ export class HotelsService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
-    return this.http.put<Hotel>(`${this.apiUrl}/hotels/${hotel.id}`, hotel, httpOptions);
+    return this.http.put<Hotel>(`${this.apiUrl}/hotels/${hotel.hotelId}`, hotel, httpOptions);
   }
 
   addHotel(hotel: Hotel): Observable<Hotel> {

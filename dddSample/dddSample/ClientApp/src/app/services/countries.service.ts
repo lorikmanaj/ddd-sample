@@ -1,13 +1,14 @@
-import { Injectable } from '@angular/core';
-import { environment } from './../environments/environment.prod';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Country } from '../app/models/country';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
+import { Country } from '../models/country';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CountriesService {
+
   private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
@@ -25,7 +26,7 @@ export class CountriesService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
-    return this.http.put<Country>(`${this.apiUrl}/countries/${country.id}`, country, httpOptions);
+    return this.http.put<Country>(`${this.apiUrl}/countries/${country.countryId}`, country, httpOptions);
   }
 
   addCountry(country: Country): Observable<Country> {

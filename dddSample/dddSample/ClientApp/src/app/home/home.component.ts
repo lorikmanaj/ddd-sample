@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Country } from '../models/country';
 import { HttpClient } from '@angular/common/http';
-import { CountriesService } from './../../services/countries.service';
+import { CountriesService } from '../services/countries.service';
+import { HotelsService } from '../services/hotels.service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs';
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
-  countryForm: FormGroup;
+  //countryForm: FormGroup;
   countries: Country[] = [];
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient, private countriesSvc: CountriesService) {
@@ -18,13 +19,13 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.countryForm = this.formBuilder.group({
-      selectedCountry: ['']
-    });
+    // this.countryForm = this.formBuilder.group({
+    //   selectedCountry: ['']
+    // });
 
-    this.countries = this.countriesSvc.getCountries().subscribe(() => {
-      console.log('GetAll Countries invoked!')
-    })
+    // this.countries = this.countriesSvc.getCountries().subscribe(() => {
+    //   console.log('GetAll Countries invoked!')
+    // })
     // this.http.get<Country[]>('http://localhost:5209/api/Countries/').subscribe(
     //   (data) => {
     //     this.countries = data;
