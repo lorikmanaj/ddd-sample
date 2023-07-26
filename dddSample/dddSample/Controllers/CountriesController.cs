@@ -1,5 +1,6 @@
 ﻿using Core.Exceptions;
 using Core.Interfaces;
+using dddSample.Validators;
 using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -37,11 +38,12 @@ namespace dddSample.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCountry([FromRoute] int id, [FromBody] Country country)
         {
-            if (!ModelState.IsValid)
-                throw new BadRequestException("Invalid request data.");
-
             if (id != country.Id)
                 return BadRequest(new BadRequestException("Country ID missmatch"));
+
+            var valRes = new CountryValidator().Validate(country);
+            if (!valRes.IsValid)
+                return BadRequest(valRes.Errors.Select(x => x.ErrorMessage).ToList());
 
             try
             {
@@ -61,6 +63,10 @@ namespace dddSample.Controllers
         [HttpPost]
         public async Task<IActionResult> PostCountry([FromBody] Country country)
         {
+            var valRes = new CountryValidator().Validate(country);
+            if (!valRes.IsValid)
+                return BadRequest(valRes.Errors.Select(x => x.ErrorMessage).ToList());
+
             var result = await _countriesRepository.AddAsync(country);
             return CreatedAtAction(nameof(GetCountry), new { id = result.Id }, result);
         }

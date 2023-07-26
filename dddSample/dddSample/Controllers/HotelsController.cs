@@ -64,7 +64,6 @@ namespace dddSample.Controllers
         public async Task<IActionResult> PostHotel([FromBody] Hotel hotel)
         {
             var valRes = new HotelValidator().Validate(hotel);
-
             if (!valRes.IsValid)
                 return BadRequest(valRes.Errors.Select(x => x.ErrorMessage).ToList());
             
