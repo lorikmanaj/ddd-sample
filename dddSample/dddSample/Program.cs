@@ -28,16 +28,18 @@ using Serilog;
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<HotelsDB>(options => {
-    options.UseSqlServer(connectionString);
-});
+builder.Services.AddDbContext<HotelsDB>(options =>
+    {
+        options.UseSqlServer(connectionString);
+    });
 
-builder.Services.AddCors(options => {
-    options.AddPolicy("AllowAll",
-        b => b.AllowAnyHeader()
-            .AllowAnyOrigin()
-            .AllowAnyMethod());
-});
+builder.Services.AddCors(options =>
+    {
+        options.AddPolicy("AllowAll",
+            b => b.AllowAnyHeader()
+                .AllowAnyOrigin()
+                .AllowAnyMethod());
+    });
 
 builder.Host.UseSerilog((ctx, lc) => lc.WriteTo.Console().ReadFrom.Configuration(ctx.Configuration));
 

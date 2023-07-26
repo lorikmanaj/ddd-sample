@@ -1,8 +1,8 @@
 ﻿using Core.Exceptions;
-using Microsoft.Extensions.Logging;
-using System.Net;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using System.Net;
 
 namespace Core.Middleware
 {
