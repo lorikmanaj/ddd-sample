@@ -21,9 +21,14 @@ using Core.GenericRepository;
 using Core.Interfaces;
 using Core.Middleware;
 using Core.Repositories;
+using dddSample.Validators;
+using Domain.Models;
+using Domain.Validators;
+using FluentValidation;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,6 +47,9 @@ builder.Services.AddCors(options =>
     });
 
 builder.Host.UseSerilog((ctx, lc) => lc.WriteTo.Console().ReadFrom.Configuration(ctx.Configuration));
+
+builder.Services.AddScoped<IValidator<Country>, CountryValidator>();
+builder.Services.AddScoped<IValidator<Hotel>, HotelValidator>();
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<ICountriesRepository, CountriesRepository>();
