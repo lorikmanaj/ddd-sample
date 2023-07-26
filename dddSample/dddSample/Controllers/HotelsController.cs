@@ -1,6 +1,7 @@
 ﻿using Core.Exceptions;
 using Core.Interfaces;
 using Domain.Models;
+using Domain.Validators;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -37,11 +38,12 @@ namespace dddSample.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutHotel([FromRoute] int id, [FromBody] Hotel hotel)
         {
-            if (!ModelState.IsValid)
-                throw new BadRequestException("Invalid request data.");
-
             if (id != hotel.Id)
                 return BadRequest(new BadRequestException("Hotel ID missmatch"));
+
+            var valRes = new HotelValidator().Validate(hotel);
+            if (!valRes.IsValid)
+                return BadRequest(valRes.Errors.Select(x => x.ErrorMessage).ToList());
 
             try
             {
@@ -61,6 +63,11 @@ namespace dddSample.Controllers
         [HttpPost]
         public async Task<IActionResult> PostHotel([FromBody] Hotel hotel)
         {
+            var valRes = new HotelValidator().Validate(hotel);
+
+            if (!valRes.IsValid)
+                return BadRequest(valRes.Errors.Select(x => x.ErrorMessage).ToList());
+            
             var result = await _hotelsRepository.AddAsync(hotel);
             return CreatedAtAction(nameof(GetHotel), new { id = result.Id }, result);
         }
