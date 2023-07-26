@@ -1,6 +1,7 @@
 ﻿using Core.Exceptions;
 using Core.Interfaces;
 using Domain.Models;
+using Domain.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
