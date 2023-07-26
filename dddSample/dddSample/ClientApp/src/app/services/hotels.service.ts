@@ -17,6 +17,10 @@ export class HotelsService {
     return this.http.get<Hotel[]>(`${this.apiUrl}/hotels`);
   }
 
+  getHotelsByCountry(countryId: number): Observable<Hotel[]> {
+    return this.http.get<Hotel[]>(`${this.apiUrl}/hotels/countryhotels/${countryId}`);
+  }
+
   getHotelById(id: number): Observable<Hotel> {
     return this.http.get<Hotel>(`${this.apiUrl}/hotels/${id}`);
   }

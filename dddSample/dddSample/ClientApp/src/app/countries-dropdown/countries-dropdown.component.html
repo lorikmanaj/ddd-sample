@@ -3,5 +3,5 @@
   <option *ngFor="let country of countries" [value]="country.id">{{ country.name }}</option>
 </select>
 <div *ngIf="selectedCountryId">
-  <p>Country Object: {{ getSelectedCountry() | json }}</p>
+  <p>Country : {{ getSelectedCountry() | json }}</p>
 </div>

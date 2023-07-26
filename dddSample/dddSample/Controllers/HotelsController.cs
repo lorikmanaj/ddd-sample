@@ -34,6 +34,14 @@ namespace dddSample.Controllers
             return hotel == null ? throw new NotFoundException("Hotel not found.", id) : Ok(hotel);
         }
 
+        // GET: api/Hotels/CountryHotels/5
+        [HttpGet("CountryHotels/{id}")]
+        public async Task<ActionResult<IEnumerable<Hotel>>> GetCountryHotels([FromRoute] int id)
+        {
+            var hotels = await _hotelsRepository.GetCountryHotels(id);
+            return hotels == null ? throw new BadRequestException("Hotels failed to load.") : Ok(hotels);
+        }
+
         // PUT: api/Hotels/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutHotel([FromRoute] int id, [FromBody] Hotel hotel)
