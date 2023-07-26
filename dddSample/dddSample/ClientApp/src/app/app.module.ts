@@ -14,6 +14,8 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
 import { CountriesService } from './services/countries.service'
 import { HotelsService } from './services/hotels.service';
+import { CountriesDropdownComponent } from './countries-dropdown/countries-dropdown.component';
+import { HotelsGridComponent } from './hotels-grid/hotels-grid.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { HotelsService } from './services/hotels.service';
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
-    FetchDataComponent
+    FetchDataComponent,
+    CountriesDropdownComponent,
+    HotelsGridComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
