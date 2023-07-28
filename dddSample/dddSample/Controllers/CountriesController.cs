@@ -20,7 +20,7 @@ namespace dddSample.Controllers
 
         // GET: api/Countries
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Hotel>>> GetCountries()
+        public async Task<ActionResult<IEnumerable<Country>>> GetCountries()
         {
             var countries = await _countriesRepository.GetAllAsync();
             return countries == null ? throw new BadRequestException("Countries failed to load.") : Ok(countries);
@@ -28,7 +28,7 @@ namespace dddSample.Controllers
 
         // GET: api/Countries/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Hotel>> GetCountry([FromRoute] int id)
+        public async Task<ActionResult<Country>> GetCountry([FromRoute] int id)
         {
             var country = await _countriesRepository.GetAsync(id);
             return country == null ? throw new NotFoundException("Country not found.", id) : Ok(country);

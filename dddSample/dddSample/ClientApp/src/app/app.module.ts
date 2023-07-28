@@ -5,6 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -17,6 +20,7 @@ import { HotelsGridComponent } from './hotels-grid/hotels-grid.component';
 
 import { CountriesService } from './services/countries.service';
 import { HotelsService } from './services/hotels.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -35,6 +39,8 @@ import { HotelsService } from './services/hotels.service';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatTableModule,
+    MatIconModule,
+    MatSnackBarModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
@@ -44,4 +50,11 @@ import { HotelsService } from './services/hotels.service';
   providers: [CountriesService, HotelsService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
+    this.matIconRegistry.addSvgIcon(
+      'delete',
+      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/trash-icon.svg') // Modify the path accordingly
+    );
+  }
+}

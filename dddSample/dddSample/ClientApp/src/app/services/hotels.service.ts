@@ -30,7 +30,7 @@ export class HotelsService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
-    return this.http.put<Hotel>(`${this.apiUrl}/hotels/${hotel.hotelId}`, hotel, httpOptions);
+    return this.http.put<Hotel>(`${this.apiUrl}/hotels/${hotel.id}`, hotel, httpOptions);
   }
 
   addHotel(hotel: Hotel): Observable<Hotel> {

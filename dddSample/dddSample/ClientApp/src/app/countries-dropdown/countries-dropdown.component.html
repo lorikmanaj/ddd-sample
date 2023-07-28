@@ -1,6 +1,7 @@
 <h2>Select Country:</h2>
 <select [(ngModel)]="selectedCountryId" (change)="onCountryChange()">
-  <option *ngFor="let country of countries" [value]="country.countryId">{{ country.countryName }}</option>
+  <option value="">-- Select a country --</option>
+  <option *ngFor="let country of countries" [value]="country.id">{{ country.name }}</option>
 </select>
 <div *ngIf="selectedCountryId">
   <p>Country : {{ getSelectedCountry() | json }}</p>

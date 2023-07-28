@@ -26,7 +26,7 @@ export class CountriesService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
-    return this.http.put<Country>(`${this.apiUrl}/countries/${country.countryId}`, country, httpOptions);
+    return this.http.put<Country>(`${this.apiUrl}/countries/${country.id}`, country, httpOptions);
   }
 
   addCountry(country: Country): Observable<Country> {

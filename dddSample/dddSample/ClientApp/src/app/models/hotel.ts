@@ -1,7 +1,7 @@
 export interface Hotel {
-    hotelId: number,
-    hotelName: string,
-    rating: number,
+    id: number,
+    name: string,
+    starsRating: number,
     comment: string,
     address: string,
     countryId: number
