@@ -1,5 +1,5 @@
 import { Component, Inject, Output, EventEmitter } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Hotel } from '../models/hotel';
 import { HotelsService } from '../services/hotels.service';
 
@@ -13,10 +13,12 @@ export class EditModalComponent {
   @Output() hotelUpdated = new EventEmitter<void>();
 
   constructor(
+    public dialogRef: MatDialogRef<EditModalComponent>,
     @Inject(MAT_DIALOG_DATA) private data: { hotel: Hotel },
     private hotelsService: HotelsService
   ) {
     this.hotel = { ...this.data.hotel };
+    this.dialogRef.close('Edited!');
   }
 
   onSaveChanges(): void {
