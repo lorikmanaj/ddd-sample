@@ -63,6 +63,10 @@ export class HotelsGridComponent implements OnChanges {
       if (result) {
         this.snackBar.open('Hotel edited successfully!', 'Close', { duration: 3000 });
         this.loadHotelsByCountry(this.selectedCountryId || 0);
+
+        dialogRef.componentInstance.hotelUpdated.subscribe(() => {
+          this.loadHotelsByCountry(this.selectedCountryId || 0);
+        });
       } else {
         this.snackBar.open('Edit failed!', 'Close', { duration: 3000 });
       }

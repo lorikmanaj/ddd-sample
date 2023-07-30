@@ -6,8 +6,6 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
-// import { MatIconRegistry } from '@angular/material/icon';
-// import { DomSanitizer } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -57,11 +55,4 @@ import { EditModalComponent } from './edit-modal/edit-modal.component';
   providers: [CountriesService, HotelsService],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-  // constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
-  //   this.matIconRegistry.addSvgIcon(
-  //     'delete',
-  //     this.domSanitizer.bypassSecurityTrustResourceUrl('assets/trash-icon.svg') // Modify the path accordingly
-  //   );
-  // }
-}
+export class AppModule {}

@@ -1,42 +1,27 @@
-/* Expand the table to fit its content */
 table {
-    width: 100%;
-  }
+  width: 100%;
+}
   
-  
-  /* Center-align the text in the data cells */
-  .mat-cell {
-    text-align: center;
-    white-space: nowrap; /* Prevent line breaks within cells */
-  }
-  
-
-
-
-
-
-.mat-header-row .mat-header-cell {
-    padding-right: 20px;
+.mat-cell {
+  text-align: center;
+  white-space: nowrap;
 }
 
-/* #del {
-    margin-right: 20px;
-} */
+.mat-header-row .mat-header-cell {
+  padding-right: 20px;
+}
 
-/* Add a border to the header cells */
 .mat-header-cell {
-    border-right: 5px solid #ccc;
-    text-align: center;
-  }
-  
-  /* Add a border to the data cells */
-  .mat-cell {
-    border-right: 5px solid #ccc;
-  }
-  
-  /* Remove the border from the last column */
-  .mat-column-countryId,
-  .mat-cell:last-child,
-  .mat-header-cell:last-child {
-    border-right: none;
-  }
+  border-right: 5px solid #ccc;
+  text-align: center;
+}
+
+.mat-cell {
+  border-right: 5px solid #ccc;
+}
+
+.mat-column-countryId,
+.mat-cell:last-child,
+.mat-header-cell:last-child {
+  border-right: none;
+}

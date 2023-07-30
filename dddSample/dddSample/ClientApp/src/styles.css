@@ -1,41 +1,20 @@
+@import '@angular/cdk/overlay-prebuilt.css';
+
 a {
   color: #0366d6;
 }
-
+ 
 code {
   color: #e01a76;
 }
-
+ 
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
-
-.custom-dialog-container .mat-dialog-container {
-  transform: translate(-50%, -50%) !important;
-}
-
+ 
 .mat-dialog-container {
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  pointer-events: none;
+  background-color: #fff;
 }
-
-.cdk-overlay-pane {
-  pointer-events: auto;
-}
-
-.custom-dialog-container {
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  pointer-events: none;
-}
-
-a {
-  pointer-events: none;
-}
+ 
