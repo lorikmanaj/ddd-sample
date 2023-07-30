@@ -3,7 +3,8 @@ import { HotelsService } from '../services/hotels.service';
 import { Hotel } from '../models/hotel';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { MatDialog } from '@angular/material/dialog';
+import { EditModalComponent } from './../edit-modal/edit-modal.component';
 
 @Component({
   selector: 'app-hotels-grid',
@@ -20,12 +21,8 @@ export class HotelsGridComponent implements OnChanges {
   constructor(
     private hotelsService: HotelsService,
     private snackBar: MatSnackBar,
-    private domSanitizer: DomSanitizer
+    private dialog: MatDialog
   ) {}
-
-  ngOnInit() {
-    this.selectedCountryId = 0;
-  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.selectedCountryId && this.selectedCountryId !== null) {
@@ -56,7 +53,19 @@ export class HotelsGridComponent implements OnChanges {
     );
   }
 
-  getTrashIconUrl(): SafeResourceUrl {
-    return this.domSanitizer.bypassSecurityTrustResourceUrl('assets/trash-icon.svg');
+  onEditHotel(hotel: Hotel): void {
+    let dialogRef = this.dialog.open(EditModalComponent, {
+      width: '400px',
+      data: { hotel }
+    });
+
+    dialogRef.afterClosed().subscribe((result: Hotel | undefined) => {
+      if (result) {
+        this.snackBar.open('Hotel edited successfully!', 'Close', { duration: 3000 });
+        this.loadHotelsByCountry(this.selectedCountryId || 0);
+      } else {
+        this.snackBar.open('Edit failed!', 'Close', { duration: 3000 });
+      }
+    });
   }
 }
