@@ -3,6 +3,9 @@
     <div class="col-md-6">
       <app-countries-dropdown (countrySelected)="onCountrySelected($event)"></app-countries-dropdown>
     </div>
+    <div class="col-md-6 text-right">
+      <button class="btn btn-primary" (click)="onCreateNewHotel()">Add New Hotel</button>
+    </div>
   </div>
   <div class="row mt-4">
     <div class="col-md-12">

@@ -4,6 +4,7 @@ import { Hotel } from '../models/hotel';
 import { Country } from '../models/country';
 import { CountriesService } from '../services/countries.service';
 import { NgForm } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-hotel',
@@ -21,7 +22,11 @@ export class AddHotelComponent implements OnInit {
     id: 0
   };
 
-  constructor(private hotelsService: HotelsService, private countriesService: CountriesService) {}
+  constructor(private hotelsService: HotelsService, 
+    private countriesService: CountriesService,
+    public dialogRef: MatDialogRef<AddHotelComponent>) {
+      
+    }
 
   ngOnInit(): void {
     this.loadCountries();

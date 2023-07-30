@@ -21,6 +21,7 @@ import { HotelsService } from './services/hotels.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { EditModalComponent } from './edit-modal/edit-modal.component';
+import { AddHotelComponent } from './add-hotel/add-hotel.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { EditModalComponent } from './edit-modal/edit-modal.component';
     FetchDataComponent,
     CountriesDropdownComponent,
     HotelsGridComponent,
-    EditModalComponent
+    EditModalComponent,
+    AddHotelComponent
   ],
   entryComponents: [
     EditModalComponent
