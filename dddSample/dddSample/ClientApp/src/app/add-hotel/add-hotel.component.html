@@ -27,10 +27,9 @@
       <label for="countryId">Country</label>
       <app-countries-dropdown [selectedCountryId]="hotel.countryId" (countrySelected)="onCountryChange($event)"></app-countries-dropdown>
     </div>
-
+    <mat-dialog-actions>
+      <button mat-button (click)="onCancelDialog()">Cancel</button>
+      <button mat-raised-button color="primary" type="submit">Add Hotel</button>
+    </mat-dialog-actions>
   </form>
 </mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button (click)="onCancelDialog()">Cancel</button>
-  <button mat-raised-button color="primary" type="submit">Add Hotel</button>
-</mat-dialog-actions>
