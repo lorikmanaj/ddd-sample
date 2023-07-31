@@ -5,6 +5,7 @@ import { Country } from '../models/country';
 import { CountriesService } from '../services/countries.service';
 import { NgForm } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-hotel',
@@ -24,7 +25,8 @@ export class AddHotelComponent implements OnInit {
 
   constructor(private hotelsService: HotelsService, 
     private countriesService: CountriesService,
-    public dialogRef: MatDialogRef<AddHotelComponent>) {
+    public dialogRef: MatDialogRef<AddHotelComponent>,
+    private snackBar: MatSnackBar) {
       
     }
 
@@ -55,10 +57,20 @@ export class AddHotelComponent implements OnInit {
         console.log('Hotel added successfully:', hotel);
         // Optionally, reset the form after submission.
         form.resetForm();
+        this.dialogRef.close(this.hotel);
       },
       (error) => {
         console.error('Error adding hotel:', error);
       }
     );
+  }
+
+  onCancelDialog(): void {
+    this.dialogRef.close();
+    this.snackBar.open("Closed!")
+  }
+
+  onCountryChange(countryId: number | null): void {
+    this.hotel.countryId = countryId !== null ? countryId : 0;
   }
 }

@@ -1,6 +1,8 @@
-<h2>Add New Hotel</h2>
 <mat-dialog-content>
-  <!-- <form (ngSubmit)="onSubmit(hotelForm)" #hotelForm="ngForm">
+  <h2>Add New Hotel</h2>
+
+  <form (ngSubmit)="onSubmit(hotelForm)" #hotelForm="ngForm">
+    
     <div class="form-group">
       <label for="name">Name</label>
       <input type="text" id="name" name="name" class="form-control" [(ngModel)]="hotel.name" required>
@@ -23,12 +25,12 @@
 
     <div class="form-group">
       <label for="countryId">Country</label>
-      <app-countries-dropdown [selectedCountryId]="hotel.countryId" (countrySelected)="hotel.countryId = $event"></app-countries-dropdown>
+      <app-countries-dropdown [selectedCountryId]="hotel.countryId" (countrySelected)="onCountryChange($event)"></app-countries-dropdown>
     </div>
 
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-      <button type="submit" class="btn btn-primary">Add Hotel</button>
-    </div>
-  </form> -->
+  </form>
 </mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancelDialog()">Cancel</button>
+  <button mat-raised-button color="primary" type="submit">Add Hotel</button>
+</mat-dialog-actions>

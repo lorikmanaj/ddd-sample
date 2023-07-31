@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AddHotelComponent } from '../add-hotel/add-hotel.component';
 import { MatDialog } from '@angular/material/dialog';
 import { HotelsService } from './../services/hotels.service';
 import { Hotel } from '../models/hotel';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { HotelsGridComponent } from '../hotels-grid/hotels-grid.component';
 
 @Component({
   selector: 'app-home',
@@ -12,11 +14,12 @@ import { Hotel } from '../models/hotel';
 export class HomeComponent {
   selectedCountryId: number | null = null;
 
+  @ViewChild(HotelsGridComponent) hotelsGridComponent!: HotelsGridComponent;
+
   constructor(
-    hotelsService: HotelsService,
+    private snackBar: MatSnackBar,
     private dialog: MatDialog
   ) {
-
   }
 
   onCountrySelected(countryId: number | null): void {
@@ -26,22 +29,18 @@ export class HomeComponent {
       this.selectedCountryId = null;
     }
   }
+      
+  onCreateNewHotel(): void {
+    let dialogRef = this.dialog.open(AddHotelComponent, {
+      width: '400px',
+    });
 
-  onCreateNewHotel() {
-    let dialogRef = this.dialog.open(AddHotelComponent);
-    
-    // dialogRef.afterClosed().subscribe((result: Hotel | undefined) => {
-    //   if (result) {
-    //     this.snackBar.open('Hotel created successfully!', 'Close', { duration: 3000 });
-    //     this.loadHotelsByCountry(this.selectedCountryId || 0);
-
-    //     dialogRef.componentInstance.hotelUpdated.subscribe(() => {
-    //       this.loadHotelsByCountry(this.selectedCountryId || 0);
-    //     });
-    //   } else {
-    //     this.snackBar.open('Edit failed!', 'Close', { duration: 3000 });
-    //   }
-    // });
+    dialogRef.afterClosed().subscribe((result: Hotel | undefined) => {
+      if (result) {
+        this.hotelsGridComponent.loadHotelsByCountry(this.selectedCountryId || 0);
+      } else {
+        this.snackBar.open('Add canceled!', 'Close', { duration: 3000 });
+      }
+    });
   }
-
 }

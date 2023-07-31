@@ -4,5 +4,5 @@ export interface Hotel {
     starsRating: number,
     comment: string,
     address: string,
-    countryId: number
+    countryId: number | null
 }

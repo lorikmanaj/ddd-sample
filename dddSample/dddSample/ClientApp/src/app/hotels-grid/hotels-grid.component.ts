@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { HotelsService } from '../services/hotels.service';
 import { Hotel } from '../models/hotel';
 import { MatTableDataSource } from '@angular/material/table';
@@ -13,7 +13,6 @@ import { EditModalComponent } from './../edit-modal/edit-modal.component';
 })
 export class HotelsGridComponent implements OnChanges {
   @Input() selectedCountryId: number | null = null;
-
   hotels: Hotel[] = [];
   dataSource: MatTableDataSource<Hotel> = new MatTableDataSource<Hotel>();
   displayedColumns: string[] = ['name', 'starsRating', 'comment', 'address'];
@@ -22,7 +21,8 @@ export class HotelsGridComponent implements OnChanges {
     private hotelsService: HotelsService,
     private snackBar: MatSnackBar,
     private dialog: MatDialog
-  ) {}
+  ) {
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.selectedCountryId && this.selectedCountryId !== null) {
@@ -32,11 +32,20 @@ export class HotelsGridComponent implements OnChanges {
     }
   }
 
-  loadHotelsByCountry(countryId: number): void {
-    this.hotelsService.getHotelsByCountry(countryId).subscribe((hotels) => {
-      this.hotels = hotels;
-      this.dataSource.data = this.hotels;
-    });
+  loadHotelsByCountry(countryId: number | null): void {
+    if (countryId !== null) {
+      this.hotelsService.getHotelsByCountry(countryId).subscribe((hotels) => {
+        this.hotels = hotels;
+        this.dataSource.data = this.hotels;
+      });
+    } else {
+      //Case when countryId is null
+      //For example you may want to show all hotels when no country is selected
+      this.hotelsService.getHotels().subscribe((hotels) => {
+        this.hotels = hotels;
+        this.dataSource.data = this.hotels;
+      });
+    }
   }
 
   onDeleteHotel(hotel: Hotel): void {
@@ -59,16 +68,12 @@ export class HotelsGridComponent implements OnChanges {
       data: { hotel }
     });
 
-    dialogRef.afterClosed().subscribe((result: Hotel | undefined) => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
+        this.loadHotelsByCountry(hotel.countryId);
         this.snackBar.open('Hotel edited successfully!', 'Close', { duration: 3000 });
-        this.loadHotelsByCountry(this.selectedCountryId || 0);
-
-        dialogRef.componentInstance.hotelUpdated.subscribe(() => {
-          this.loadHotelsByCountry(this.selectedCountryId || 0);
-        });
       } else {
-        this.snackBar.open('Edit failed!', 'Close', { duration: 3000 });
+        this.snackBar.open('Edit canceled!', 'Close', { duration: 3000 });
       }
     });
   }

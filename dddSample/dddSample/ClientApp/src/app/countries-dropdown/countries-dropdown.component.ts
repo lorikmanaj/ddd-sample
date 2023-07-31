@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CountriesService } from '../services/countries.service';
 import { Country } from '../models/country';
 
@@ -9,8 +9,8 @@ import { Country } from '../models/country';
 })
 export class CountriesDropdownComponent implements OnInit {
   countries: Country[] = [];
-  selectedCountryId: number | null = null;
 
+  @Input() selectedCountryId: number | null = 0;
   @Output() countrySelected: EventEmitter<number | null> = new EventEmitter<number | null>();
 
   constructor(private countriesService: CountriesService) {}

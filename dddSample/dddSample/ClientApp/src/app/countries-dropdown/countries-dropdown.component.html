@@ -3,6 +3,3 @@
   <option value="">-- Select a country --</option>
   <option *ngFor="let country of countries" [value]="country.id">{{ country.name }}</option>
 </select>
-<div *ngIf="selectedCountryId">
-  <p>Country : {{ getSelectedCountry() | json }}</p>
-</div>
