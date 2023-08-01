@@ -4,16 +4,16 @@ import { Hotel } from '../models/hotel';
 import { HotelsService } from '../services/hotels.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HotelsGridComponent } from '../hotels-grid/hotels-grid.component';
- 
+
 @Component({
   selector: 'app-edit-modal',
   templateUrl: './edit-modal.component.html',
-  styleUrls: ['./edit-modal.component.css']
+  styleUrls: ['./edit-modal.component.css'],
 })
 export class EditModalComponent {
   hotel: Hotel;
   @Output() hotelUpdated = new EventEmitter<void>();
- 
+
   @ViewChild(HotelsGridComponent) hotelsGridComponent!: HotelsGridComponent;
 
   constructor(
@@ -24,21 +24,18 @@ export class EditModalComponent {
   ) {
     this.hotel = { ...this.data.hotel };
   }
- 
+
   onSaveChanges(): void {
     this.hotelsService.updateHotel(this.hotel).subscribe(
       (hotel) => {
+        console.log('Hotel updated successfully:', hotel);
         this.hotelUpdated.emit();
-        this.dialogRef.componentInstance.hotelUpdated.subscribe(() => {
-          this.hotelsGridComponent.loadHotelsByCountry(this.hotel.countryId);
-        });
-
         this.dialogRef.close(this.hotel);
       },
       (error) => {
         console.error('Error updating hotel:', error);
       }
-    );    
+    );
   }
 
   onCancelDialog(): void {

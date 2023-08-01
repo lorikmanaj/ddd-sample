@@ -1,30 +1,42 @@
 <h2 mat-dialog-title>Edit Hotel</h2>
 <mat-dialog-content>
-  <form>
+  <form (ngSubmit)="onSaveChanges()" #hotelForm="ngForm">
     
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" id="name" name="name" class="form-control" [(ngModel)]="hotel.name">
+      <input type="text" id="name" name="name" class="form-control" [(ngModel)]="hotel.name" required minlength="5" maxlength="30">
+      <div *ngIf="hotelForm.controls.name?.invalid && (hotelForm.controls.name?.dirty || hotelForm.controls.name?.touched)">
+        <mat-error *ngIf="hotelForm.controls.name?.errors?.required">Name is required.</mat-error>
+        <mat-error *ngIf="hotelForm.controls.name?.errors?.minlength">Name must be at least 5 characters.</mat-error>
+        <mat-error *ngIf="hotelForm.controls.name?.errors?.maxlength">Name cannot exceed 30 characters.</mat-error>
+      </div>
     </div>
- 
+
     <div class="form-group">
       <label for="starsRating">Stars Rating</label>
-      <input type="number" id="starsRating" name="starsRating" class="form-control" [(ngModel)]="hotel.starsRating">
+      <input type="number" id="starsRating" name="starsRating" class="form-control" [(ngModel)]="hotel.starsRating" required max="5">
+      <div *ngIf="hotelForm.controls.starsRating?.invalid && (hotelForm.controls.starsRating?.dirty || hotelForm.controls.starsRating?.touched)">
+        <mat-error *ngIf="hotelForm.controls.starsRating?.errors?.required">Stars Rating is required.</mat-error>
+        <mat-error *ngIf="hotelForm.controls.starsRating?.errors?.max">Stars Rating cannot be greater than 5.</mat-error>
+      </div>
     </div>
- 
+
     <div class="form-group">
       <label for="comment">Comment</label>
       <textarea id="comment" name="comment" class="form-control" [(ngModel)]="hotel.comment"></textarea>
     </div>
- 
+
     <div class="form-group">
       <label for="address">Address</label>
-      <input type="text" id="address" name="address" class="form-control" [(ngModel)]="hotel.address">
+      <input type="text" id="address" name="address" class="form-control" [(ngModel)]="hotel.address" required>
+      <div *ngIf="hotelForm.controls.address?.invalid && (hotelForm.controls.address?.dirty || hotelForm.controls.address?.touched)">
+        <mat-error *ngIf="hotelForm.controls.address?.errors?.required">Address is required.</mat-error>
+      </div>
     </div>
 
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button (click)="onCancelDialog()">Cancel</button>
-  <button mat-button (click)="onSaveChanges()">Save Changes</button>
+  <button mat-raised-button color="primary" [disabled]="hotelForm.invalid" (click)="onSaveChanges()">Save Changes</button>
 </mat-dialog-actions>
