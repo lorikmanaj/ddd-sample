@@ -23,6 +23,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { EditModalComponent } from './edit-modal/edit-modal.component';
 import { AddHotelComponent } from './add-hotel/add-hotel.component';
+import { AddCountryComponent } from './add-country/add-country.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AddHotelComponent } from './add-hotel/add-hotel.component';
     CountriesDropdownComponent,
     HotelsGridComponent,
     EditModalComponent,
-    AddHotelComponent
+    AddHotelComponent,
+    AddCountryComponent
   ],
   entryComponents: [
     EditModalComponent
@@ -56,7 +58,7 @@ import { AddHotelComponent } from './add-hotel/add-hotel.component';
       { path: 'fetch-data', component: FetchDataComponent },
     ]),
   ],
-  providers: [CountriesService, HotelsService],
+  providers: [CountriesService, HotelsService, CountriesDropdownComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

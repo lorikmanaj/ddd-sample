@@ -47,7 +47,6 @@ export class AddHotelComponent implements OnInit {
 
   onSubmit(form: NgForm): void {
     if (form.invalid) {
-      // Handle form validation errors, if needed.
       return;
     }
 

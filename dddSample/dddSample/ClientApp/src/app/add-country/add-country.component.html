@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>Add New Country</h2>
+<mat-dialog-content>
+  <form (ngSubmit)="onSubmit(countryForm)" #countryForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" class="form-control" [(ngModel)]="country.name" required minlength="4" maxlength="30">
+      <div *ngIf="countryForm.controls.name?.invalid && (countryForm.controls.name?.dirty || countryForm.controls.name?.touched)">
+        <mat-error *ngIf="countryForm.controls.name?.errors?.required">Name is required.</mat-error>
+        <mat-error *ngIf="countryForm.controls.name?.errors?.minlength">Name must be at least 4 characters.</mat-error>
+        <mat-error *ngIf="countryForm.controls.name?.errors?.maxlength">Name cannot exceed 30 characters.</mat-error>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="shortName">Short Name</label>
+      <input type="text" id="shortName" name="shortName" class="form-control" [(ngModel)]="country.shortName" required minlength="2" maxlength="4">
+      <div *ngIf="countryForm.controls.shortName?.invalid && (countryForm.controls.shortName?.dirty || countryForm.controls.shortName?.touched)">
+        <mat-error *ngIf="countryForm.controls.shortName?.errors?.required">Short Name is required.</mat-error>
+        <mat-error *ngIf="countryForm.controls.shortName?.errors?.minlength">Short Name must be at least 2 characters.</mat-error>
+        <mat-error *ngIf="countryForm.controls.shortName?.errors?.maxlength">Short Name cannot exceed 4 characters.</mat-error>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancelDialog()">Cancel</button>
+  <button mat-raised-button color="primary" [disabled]="countryForm.invalid" (click)="onSubmit(countryForm)">Add Country</button>
+</mat-dialog-actions>
