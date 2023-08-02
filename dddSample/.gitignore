@@ -8,7 +8,7 @@ obj/
 *.user
 *.csproj.user
 *.userprefs
-*.vscode/
+.vscode/
 *.vssettings
 .vscode/
 *.njsproj
@@ -40,29 +40,43 @@ packages/
 # User-specific files
 *.user
 
-# Build results
-[Dd]ebug/
-[Rr]elease/
-x64/
-x86/
-bld/
-[Bb]in/
-[Oo]bj/
-[Ll]og/
-
-# Visual Studio code coverage
-*.coverage
-*.coveragexml
-
-# Other generated files
-_ReSharper*/
-*.resharper*
-*.dotCover
-*.crdownload
-*.suo
-*.swp
-
 # Ignore node_modules directory
 node_modules/
-dist/
+/dist
+/dist-server
+/tmp
+/out-tsc
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
 /.angular/cache
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
