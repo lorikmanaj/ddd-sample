@@ -71,10 +71,10 @@ _ReSharper*/
 
 # Ignore node_modules directory
 node_modules/
-/dist
-/dist-server
-/tmp
-/out-tsc
+dist
+dist-server
+tmp
+out-tsc
 
 # IDEs and editors
 /.idea
