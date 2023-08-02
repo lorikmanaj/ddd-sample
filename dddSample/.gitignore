@@ -54,6 +54,13 @@ bld/
 *.coverage
 *.coveragexml
 
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
 # Other generated files
 _ReSharper*/
 *.resharper*
@@ -61,3 +68,34 @@ _ReSharper*/
 *.crdownload
 *.suo
 *.swp
+
+# Ignore node_modules directory
+node_modules/
+/dist
+/dist-server
+/tmp
+/out-tsc
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# misc
+/.angular/cache
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
