@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  api:
+    image: api-docker
+    ports:
+      - "2443:2443"
+
+networks:
+  default:
+    driver: bridge

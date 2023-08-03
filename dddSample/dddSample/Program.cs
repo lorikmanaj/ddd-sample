@@ -1,22 +1,3 @@
-//net5 version of Program.cs (experienced)
-//using dddSample;
-
-//public class Program
-//{
-//    public static void Main(string[] args)
-//    {
-//        CreateHostBuilder(args).Build().Run();
-//    }
-
-//    public static IHostBuilder CreateHostBuilder(string[] args) =>
-//        Host.CreateDefaultBuilder(args)
-//            .ConfigureWebHostDefaults(webBuilder =>
-//            {
-//                webBuilder.UseStartup<Startup>();
-//            });
-//}
-
-//net6 Version of Program.cs (unexperienced, still experimenting)
 using Core.GenericRepository;
 using Core.Interfaces;
 using Core.Middleware;
