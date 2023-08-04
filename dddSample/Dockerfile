@@ -8,7 +8,7 @@ RUN npm install
 
 COPY dddSample/ClientApp .
 
-RUN npm run build --configuration=production --output-path=/app/dist
+RUN npm run build -- --output-path=/app/dist
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-net
 
@@ -30,9 +30,8 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS runtime
 WORKDIR /app
 
 COPY --from=build-net /app/out ./
-
 COPY --from=build-node /app/dist ./wwwroot
 
-EXPOSE 2443
+EXPOSE 80
 
 ENTRYPOINT ["dotnet", "dddSample.dll"]
