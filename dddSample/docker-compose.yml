@@ -6,19 +6,19 @@ services:
     ports:
       - "2443:80"
     depends_on:
-      - db
+      - sqlDock
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
-      - ConnectionStrings__DefaultConnection=Data Source=localhost,1433;Initial Catalog=dddDb;Persist Security Info=True;User ID=sa;Password=Dockersql123!;TrustServerCertificate=true;
+      - ConnectionStrings__DefaultConnection=Data Source=sqlDock,1433;Initial Catalog=dddDb;Persist Security Info=True;User ID=sa;Password=Dockersql123!;TrustServerCertificate=true;
 
-  db:
-    image: "mcr.microsoft.com/mssql/server:2019-latest"
+  sqlDock:
+    container_name: sqlDock   # Make sure the container name is specified
+    image: mcr.microsoft.com/mssql/server:2019-latest
     ports:
       - "1433:1433"
     environment:
       - SA_PASSWORD=Dockersql123!
       - ACCEPT_EULA=Y
-    container_name: sql-server
 
   client:
     build:
